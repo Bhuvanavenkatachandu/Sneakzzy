@@ -1,38 +1,487 @@
-.App {
-  text-align: center;
+/* Base Layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f2f7;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
   flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.MainApp {
+  flex: 1;
+  padding-bottom: 80px;
+}
+
+/* Navbar */
+.navbar, .Navbar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: linear-gradient(90deg, #24292f 0%, #3d3f47 100%);
+  padding: 15px 30px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.site-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.site-link {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links, .Nav-Links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
+.nav-links a, .Nav-Links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after, .Nav-Links a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #1e90ff;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.nav-links a:hover::after, .Nav-Links a:hover::after {
+  width: 100%;
+}
+
+.logout-btn {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e63946;
+}
+
+.welcome-user {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-right: 10px;
+}
+
+/* Home Container */
+.home-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Product Card */
+.ProductCard {
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ProductCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ProductCard img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.ProdName {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #444;
+  font-weight: bold;
+}
+
+.View-Link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.View-Link:hover {
+  background-color: #0056b3;
+}
+
+/* Product Details */
+.product-details {
+  padding: 30px;
+  text-align: center;
+}
+
+.product-details img {
+  width: 300px;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Size Buttons */
+.sizes {
+  margin-top: 20px;
+  margin-bottom: 1rem;
+}
+
+.sizes p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sizes button {
+  margin: 0.3rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #333;
+  background-color: #fefefe;
+  color: #333;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.sizes button:hover {
+  background-color: #ececec;
+}
+
+/* Add to Cart Button */
+.addtocart {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.addtocart:hover {
+  background-color: #218838;
+}
+
+/* Cart Page */
+.cart-container {
+  max-width: 640px;
+  margin: 2rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item p {
+  margin: 0.5rem 0;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0.5rem 0;
+}
+
+.qty-controls button {
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.qty-controls button:hover {
+  background-color: #555;
+}
+
+.clear-cart-btn {
+  margin-top: 1.5rem;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.clear-cart-btn:hover {
+  background-color: #c82333;
+}
+
+/* Footer */
+.footer {
+  background-color: #24292f;
+  color: white;
+  text-align: center;
+  padding: 20px 30px;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+}
+
+/* Auth Forms */
+.auth-container {
+  max-width: 420px;
+  margin: 4rem auto;
+  padding: 2.5rem 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    transform: translateY(15px);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form label {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+.auth-form button {
+  padding: 12px;
+  font-size: 1.05rem;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.auth-form button:hover {
+  background-color: #3b7bd3;
+}
+
+.auth-toggle {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.auth-toggle a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-toggle a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar, .Navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .Nav-Links, .navbar .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .ProductCard {
+    width: 90%;
+    margin: auto;
+  }
+
+  .product-details img {
+    width: 90%;
+  }
+
+  .cart-container {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cart-item-image {
+    width: 80px;
+  }
+
+  .qty-controls {
+    justify-content: center;
+  }
+
+  .footer {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProductCard {
+    width: 100%;
+  }
+
+  .View-Link,
+  .addtocart,
+  .sizes button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .qty-controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .cart-item-image {
+    width: 70px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 15px 10px;
+  }
+
+  .auth-container {
+    width: 92%;
+    padding: 1.8rem 1.2rem;
+  }
+
+  .auth-form input,
+  .auth-form button {
+    font-size: 1rem;
+  }
+
+  .auth-container h2 {
+    font-size: 1.5rem;
   }
 }
