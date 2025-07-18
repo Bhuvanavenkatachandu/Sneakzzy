@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <h2 className='site-name'>
-        <Link to="/" className="site-link">Sneakz</Link>
+        <Link to="/" className="site-link">Sneakzzy</Link>
       </h2>
 
       <div className="nav-links">

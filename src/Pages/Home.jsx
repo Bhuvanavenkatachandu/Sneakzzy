@@ -5,7 +5,7 @@ import ProductCard from '../Components/ProductCard';
 const Home = () => {
   return (
     <div className="home-container">
-      <h1>Welcome to ShoeZone</h1>
+      <h1>Welcome to Sneakzzy</h1>
       <p>Find the best shoes from top brands at amazing prices!</p>
       <div className="product-grid">
         {products.map((product) => (
