@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -10,11 +10,26 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const [searchQuery,setsearchQuery]=useState('');
+  const handlequery=(e)=>{
+    e.preventDefault();
+    if(searchQuery.trim()){
+      navigate(`/products?search=${searchQuery}`);
+    }
+  };
+
   return (
     <nav className='navbar'>
       <h2 className='site-name'>
         <Link to="/" className="site-link">Sneakzzy</Link>
       </h2>
+
+      <form className="search-Bar" onSubmit={handlequery}>
+        <input type="text" className="SearchInput" value={searchQuery} placeholder='Search shoes' onChange={(e)=>setsearchQuery(e.target.value)}/>
+        <button className="submit-button">
+          🔍
+        </button>
+      </form>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
