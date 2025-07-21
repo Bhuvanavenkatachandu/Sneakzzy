@@ -10,44 +10,50 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  const [searchQuery,setsearchQuery]=useState('');
-  const handlequery=(e)=>{
+  const [searchQuery, setsearchQuery] = useState('');
+  const handlequery = (e) => {
     e.preventDefault();
-    if(searchQuery.trim()){
+    if (searchQuery.trim()) {
       navigate(`/products?search=${searchQuery}`);
     }
   };
 
   return (
-    <nav className='navbar'>
-      <h2 className='site-name'>
+    <nav className="navbar">
+      <h2 className="site-name">
         <Link to="/" className="site-link">Sneakzzy</Link>
       </h2>
 
       <form className="search-Bar" onSubmit={handlequery}>
-        <input type="text" className="SearchInput" value={searchQuery} placeholder='Search shoes' onChange={(e)=>setsearchQuery(e.target.value)}/>
-        <button className="submit-button">
-          🔍
-        </button>
+        <input
+          type="text"
+          className="SearchInput"
+          value={searchQuery}
+          placeholder="Search shoes"
+          onChange={(e) => setsearchQuery(e.target.value)}
+        />
+        <button className="submit-button">🔍</button>
       </form>
 
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/cart">Cart</Link>
+      <ul className="nav-links">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/products">Products</Link></li>
+        <li><Link to="/cart">Cart</Link></li>
 
         {user ? (
           <>
-            <span className="welcome-user">Hi, {user.email}</span>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            <li className="welcome-user">Hi, {user.email}</li>
+            <li>
+              <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            </li>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/signup">Signup</Link></li>
           </>
         )}
-      </div>
+      </ul>
     </nav>
   );
 };

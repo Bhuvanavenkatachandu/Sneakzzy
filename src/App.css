@@ -534,3 +534,29 @@ body {
     font-size: 1.5rem;
   }
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
